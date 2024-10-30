@@ -94,20 +94,19 @@ while True:
            print(ack)
            i+=s
 ```
-## client output:
-![alt text](client.png)
+
 ### server:
 ```py
 import socket
+simport socket
 s=socket.socket()
 s.connect(('localhost',8000))
 while True: 
  print(s.recv(1024).decode())
  s.send("acknowledgement recived from the server".encode())
 ```
-### server output
-![alt text](server.png)
-
+# Output :
+![alt text](program/output.png)
 ## Result:
 
 Thus the study on Client Server Chat Applications has been performed
