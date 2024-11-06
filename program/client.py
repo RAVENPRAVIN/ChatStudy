@@ -1,18 +1,25 @@
 import socket
-s=socket.socket()
-s.bind(('localhost',8000))
-s.listen(5)
-c,addr=s.accept()
-size=int(input("Enter number of frames to send : "))
-l=list(range(size))
-s=int(input("Enter Window Size : "))
-st=0
-i=0
-while True:
- while(i<len(l)):
-       st+=s
-       c.send(str(l[i:st]).encode())
-       ack=c.recv(1024).decode()
-       if ack:
-           print(ack)
-           i+=s
+
+
+def client_program():
+    host = socket.gethostname()  # as both code is running on same pc
+    port = 5000  # socket server port number
+
+    client_socket = socket.socket()  # instantiate
+    client_socket.connect((host, port))  # connect to the server
+
+    message = input(" -> ")  # take input
+
+    while message.lower().strip() != 'bye':
+        client_socket.send(message.encode())  # send message
+        data = client_socket.recv(1024).decode()  # receive response
+
+        print('Received from server: ' + data)  # show in terminal
+
+        message = input(" -> ")  # again take input
+
+    client_socket.close()  # close the connection
+
+
+if __name__ == '__main__':
+    client_program()
