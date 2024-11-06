@@ -106,7 +106,7 @@ while True:
  s.send("acknowledgement recived from the server".encode())
 ```
 # Output :
-![alt text](program/output.png)
+![alt text](<program/updated output.png>)
 ## Result:
 
 Thus the study on Client Server Chat Applications has been performed
